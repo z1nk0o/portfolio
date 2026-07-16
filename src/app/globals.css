@@ -16,3 +16,47 @@ html {
 ::selection {
   background: rgba(16, 185, 129, 0.25);
 }
+
+/* Hero portrait animations — disabled for users who prefer reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  .animate-hero-in {
+    animation: hero-in 0.8s ease-out both;
+  }
+  .animate-glow-pulse {
+    animation: glow-pulse 6s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}

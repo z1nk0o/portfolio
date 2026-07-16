@@ -125,22 +125,36 @@ export default function Home() {
               </div>
             </div>
 
-            {/* profile picture */}
+            {/* profile picture — transparent PNG on a theme-aware gradient circle */}
             <div className="order-1 justify-self-center sm:order-2">
-              <div className="group relative">
-                <div
-                  aria-hidden
-                  className="absolute -inset-2 rounded-2xl bg-emerald-500/15 blur-xl transition-opacity group-hover:opacity-100 dark:bg-emerald-400/10"
-                />
-                <div className="relative overflow-hidden rounded-2xl border-2 border-emerald-600/40 dark:border-emerald-400/40">
-                  <Image
-                    src={profile.photo}
-                    alt={`Portrait of ${profile.name}`}
-                    width={224}
-                    height={224}
-                    priority
-                    className="size-40 object-cover sm:size-56"
+              <div className="animate-hero-in">
+                <div className="animate-float relative">
+                  {/* soft pulsing glow */}
+                  <div
+                    aria-hidden
+                    className="animate-glow-pulse absolute inset-x-0 bottom-0 aspect-square rounded-full bg-emerald-500/25 blur-2xl dark:bg-emerald-400/20"
                   />
+                  {/* portrait area: circle sits at the bottom, head pops above it */}
+                  <div className="relative h-52 w-44 sm:h-72 sm:w-60">
+                    <div
+                      aria-hidden
+                      className="absolute inset-x-0 bottom-0 aspect-square rounded-full bg-gradient-to-br from-emerald-200 via-emerald-300 to-emerald-500 dark:from-emerald-500/50 dark:via-emerald-700/40 dark:to-emerald-950"
+                    />
+                    <div className="absolute inset-0 overflow-hidden rounded-b-full">
+                      <Image
+                        src={profile.photo}
+                        alt={`Portrait of ${profile.name}`}
+                        width={600}
+                        height={600}
+                        priority
+                        className="absolute bottom-0 left-1/2 w-[112%] max-w-none -translate-x-1/2 object-contain drop-shadow-xl"
+                      />
+                    </div>
+                    <div
+                      aria-hidden
+                      className="absolute inset-x-0 bottom-0 aspect-square rounded-full ring-2 ring-emerald-600/25 ring-offset-0 dark:ring-emerald-400/25"
+                    />
+                  </div>
                 </div>
               </div>
             </div>

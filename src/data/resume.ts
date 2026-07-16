@@ -12,9 +12,9 @@ export const profile = {
   phone: "09662082103",
   github: "https://github.com/z1nk0o",
   linkedin: "https://www.linkedin.com/in/trex-reapor-88389a326/",
-  // Replace with a real photo: drop e.g. profile.jpg into /public and
-  // change this to "/profile.jpg". Square images (min 400×400) look best.
-  photo: "/profile.svg",
+  // Square PNG with transparent background (600×600) — the hero renders it
+  // on a gradient circle that adapts to light/dark mode.
+  photo: "/profile.png",
 };
 
 export type Experience = {
