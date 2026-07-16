@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+/* Class-based dark mode (toggled via <html class="dark">) instead of
+   media-query-only, so the user can override their system preference. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: rgba(16, 185, 129, 0.25);
+}
