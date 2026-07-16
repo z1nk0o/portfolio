@@ -1,9 +1,13 @@
 "use client";
 
+type DocumentWithVT = Document & {
+  startViewTransition?: (cb: () => void) => { ready: Promise<void> };
+};
+
 // Icon visibility is handled purely by CSS (dark:hidden / dark:inline), so this
 // component renders identically on server and client — no hydration mismatch.
 export function ThemeToggle() {
-  function toggle() {
+  function applyTheme() {
     const root = document.documentElement;
     const isDark = root.classList.toggle("dark");
     try {
@@ -11,6 +15,47 @@ export function ThemeToggle() {
     } catch {
       // localStorage unavailable (private mode) — theme still toggles for the session
     }
+  }
+
+  function toggle(e: React.MouseEvent<HTMLButtonElement>) {
+    const doc = document as DocumentWithVT;
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    // Fallback: browsers without the View Transitions API switch instantly.
+    if (!doc.startViewTransition || reduceMotion) {
+      applyTheme();
+      return;
+    }
+
+    // Circular reveal: the new theme expands from the click point.
+    const x = e.clientX;
+    const y = e.clientY;
+    const transition = doc.startViewTransition(applyTheme);
+    transition.ready
+      .then(() => {
+        const radius = Math.hypot(
+          Math.max(x, window.innerWidth - x),
+          Math.max(y, window.innerHeight - y),
+        );
+        document.documentElement.animate(
+          {
+            clipPath: [
+              `circle(0px at ${x}px ${y}px)`,
+              `circle(${radius}px at ${x}px ${y}px)`,
+            ],
+          },
+          {
+            duration: 550,
+            easing: "ease-in-out",
+            pseudoElement: "::view-transition-new(root)",
+          },
+        );
+      })
+      .catch(() => {
+        // transition was skipped (rapid clicks) — theme already applied
+      });
   }
 
   return (

@@ -143,6 +143,25 @@ export default function Home() {
                       priority
                       className="size-full object-cover"
                     />
+                    {profile.photoDark ? (
+                      // Alternate dark-mode photo cross-fades over the base one
+                      <Image
+                        src={profile.photoDark}
+                        alt=""
+                        width={600}
+                        height={600}
+                        className="absolute inset-0 size-full object-cover opacity-0 transition-opacity duration-500 dark:opacity-100"
+                      />
+                    ) : (
+                      // Sunglasses drop in when dark mode is on 😎
+                      <svg viewBox="0 0 200 64" className="sunglasses" aria-hidden>
+                        <rect x="12" y="10" width="76" height="42" rx="17" fill="#0c0a09" stroke="#34d399" strokeOpacity="0.45" strokeWidth="2.5" />
+                        <rect x="112" y="10" width="76" height="42" rx="17" fill="#0c0a09" stroke="#34d399" strokeOpacity="0.45" strokeWidth="2.5" />
+                        <path d="M88 22 C 94 13, 106 13, 112 22" fill="none" stroke="#0c0a09" strokeWidth="7" strokeLinecap="round" />
+                        <line x1="28" y1="42" x2="52" y2="18" stroke="white" strokeOpacity="0.16" strokeWidth="7" strokeLinecap="round" />
+                        <line x1="128" y1="42" x2="152" y2="18" stroke="white" strokeOpacity="0.16" strokeWidth="7" strokeLinecap="round" />
+                      </svg>
+                    )}
                   </div>
                 </div>
               </div>

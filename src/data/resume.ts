@@ -15,6 +15,10 @@ export const profile = {
   // Square PNG with transparent background (600×600) — the hero renders it
   // on a gradient circle that adapts to light/dark mode.
   photo: "/profile.png",
+  // Optional alternate photo for dark mode (e.g. an edited version wearing
+  // real sunglasses). When set, it cross-fades in on theme switch and the
+  // drawn sunglasses overlay is hidden automatically.
+  photoDark: null as string | null,
 };
 
 export type Experience = {
