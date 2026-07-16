@@ -125,34 +125,23 @@ export default function Home() {
               </div>
             </div>
 
-            {/* profile picture — transparent PNG on a theme-aware gradient circle */}
+            {/* profile picture — circular crop on a theme-aware gradient */}
             <div className="order-1 justify-self-center sm:order-2">
               <div className="animate-hero-in">
                 <div className="animate-float relative">
                   {/* soft pulsing glow */}
                   <div
                     aria-hidden
-                    className="animate-glow-pulse absolute inset-x-0 bottom-0 aspect-square rounded-full bg-emerald-500/25 blur-2xl dark:bg-emerald-400/20"
+                    className="animate-glow-pulse absolute -inset-3 rounded-full bg-emerald-500/25 blur-2xl dark:bg-emerald-400/20"
                   />
-                  {/* portrait area: circle sits at the bottom, head pops above it */}
-                  <div className="relative h-52 w-44 sm:h-72 sm:w-60">
-                    <div
-                      aria-hidden
-                      className="absolute inset-x-0 bottom-0 aspect-square rounded-full bg-gradient-to-br from-emerald-200 via-emerald-300 to-emerald-500 dark:from-emerald-500/50 dark:via-emerald-700/40 dark:to-emerald-950"
-                    />
-                    <div className="absolute inset-0 overflow-hidden rounded-b-full">
-                      <Image
-                        src={profile.photo}
-                        alt={`Portrait of ${profile.name}`}
-                        width={600}
-                        height={600}
-                        priority
-                        className="absolute bottom-0 left-1/2 w-[112%] max-w-none -translate-x-1/2 object-contain drop-shadow-xl"
-                      />
-                    </div>
-                    <div
-                      aria-hidden
-                      className="absolute inset-x-0 bottom-0 aspect-square rounded-full ring-2 ring-emerald-600/25 ring-offset-0 dark:ring-emerald-400/25"
+                  <div className="relative size-48 overflow-hidden rounded-full bg-gradient-to-br from-emerald-200 via-emerald-300 to-emerald-500 ring-2 ring-emerald-600/30 sm:size-64 dark:from-emerald-500/50 dark:via-emerald-700/40 dark:to-emerald-950 dark:ring-emerald-400/30">
+                    <Image
+                      src={profile.photo}
+                      alt={`Portrait of ${profile.name}`}
+                      width={600}
+                      height={600}
+                      priority
+                      className="size-full object-cover"
                     />
                   </div>
                 </div>
@@ -302,7 +291,7 @@ export default function Home() {
                 {profile.email}
               </a>
               <a
-                href={`tel:+63${profile.phone.slice(1)}`}
+                href={`tel:${profile.phone.replace(/\s+/g, "")}`}
                 className={`${outlineBtn} px-6 py-3 font-mono text-sm`}
               >
                 {profile.phone}

@@ -9,7 +9,7 @@ export const profile = {
   intro:
     "I build and maintain production ERP systems end-to-end — turning manual, paper-based business processes into automated web workflows with role-based approvals. Full-stack with Next.js, React, TypeScript, Prisma, and PostgreSQL; equally at home in legacy PHP systems.",
   email: "reapor.trex@gmail.com",
-  phone: "09662082103",
+  phone: "+63 966 208 2103",
   github: "https://github.com/z1nk0o",
   linkedin: "https://www.linkedin.com/in/trex-reapor-88389a326/",
   // Square PNG with transparent background (600×600) — the hero renders it
