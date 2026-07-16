@@ -2,7 +2,11 @@
 
 Personal portfolio website: junior programmer specializing in web development and ERP systems.
 
+**🌐 Live:** [portfolio-trex-reapor.vercel.app](https://portfolio-trex-reapor.vercel.app)
+
 **Stack:** Next.js (App Router) · TypeScript · Tailwind CSS · deployed on Vercel
+
+**Details:** dark/light mode with an animated circular-reveal transition (View Transitions API), an animated hero portrait, and full mobile responsiveness. Reduced-motion preferences are respected throughout.
 
 ## Editing content
 
